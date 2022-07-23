@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<a href="add" class="badge badge-secondary"><h4>добавить</h4></a>
+<br>
+<br>
+<div class="container">
+    <h2 class="text-align:center"><em>Каталог</em></h2>
+
+    <table class="table table-hover">
+        <tr>
+            <th>id</th>
+            <th>наименоване</th>
+            <th>размер</th>
+            <th>цена</th>
+            <th>цвет</th>
+            <th>бренд</th>
+            <th>артикул</th>
+            <th>редактирование</th>
+            <th>удаление</th>
+        </tr>
+        <tr th:each = "catalog : ${catalogs}">
+            <td th:text = "${catalog.id}"></td>
+            <td th:text = "${catalog.name}"></td>
+            <td th:text = "${catalog.size}"></td>
+            <td th:text = "${catalog.price}"></td>
+            <td th:text = "${catalog.color}"></td>
+            <td th:text = "${catalog.brand}"></td>
+            <td th:text = "${catalog.articleNumber}"></td>
+            <td>
+                <a th:href="@{update(id=${catalog.id})}" class="text-warning">редакировать</a>
+            </td>
+            <td>
+                <a th:href="@{delete(id=${catalog.id})}" class="text-danger">удалить</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
